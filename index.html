@@ -10,6 +10,10 @@
         
         <script>
             var buttonE = document.getElementById('button');
+            var buttonClick = function() {
+                buttonE.innerHTML = 'clicked';
+            };
+            buttonE.addEventListener('click', buttonClick);
         </script>
     </body>
 </html>
