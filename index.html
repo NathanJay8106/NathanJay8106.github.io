@@ -5,17 +5,23 @@
         <title></title>
         <style>
             .button {
-                width: 400 px;
+                background-color: rgb(178, 211, 232);
+                font-size: 148px;
+                margin-right: 50px;
             }
         </style>
     </head>
     <body>
-        <p id = "button">Button</p>
+        <div id = "buttons">
+            <button class = "button">A</button>
+            <button class = 'button'>B</button>
+        </div>
+        
         
         <script>
-            var buttonE = document.getElementById('button');
+            var buttons = document.getElementById('buttons');
             var buttonClick = function() {
-                buttonE.innerHTML = 'clicked';
+                
             };
             buttonE.addEventListener('click', buttonClick);
         </script>
