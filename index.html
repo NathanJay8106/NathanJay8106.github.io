@@ -5,25 +5,46 @@
         <title>New webpage</title>
         <style>
             .button {
-                background-color: rgb(255);
+                background-color: rgb(255, 255, 255);
                 font-size: 148px;
                 margin-right: 50px;
+                
             }
         </style>
     </head>
     <body>
-        <div class = "button">
+        <div>
             <button class = 'button' id = 'aButton'>A</button>
-            <button class = 'button'>B</button>
+            <button class = 'button' id = 'bButton'>B</button>
+            <button class = 'button' id = 'cButton'>C</button>
         </div>
         
         
         <script>
             var aButton = document.getElementById('aButton');
-            var aButtonClick = function() {
+            var bButton = document.getElementById('bButton');
+            var cButton = document.getElementById('cButton');
+            var aButtonSelect = function() {
                 aButton.style.backgroundColor = 'rgb(102, 175, 209)';
+                bButton.style.backgroundColor = 'rgb(255, 255, 255)';
+                cButton.style.backgroundColor = 'rgb(255, 255, 255)'
             };
-            aButton.addEventListener('click', aButtonClick);
+            aButton.addEventListener('click', aButtonSelect);
+            
+            var bButtonSelect = function() {
+                bButton.style.backgroundColor = 'rgb(102, 175, 209)';
+                aButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                cButton.style.backgroundColor = 'rgb(255, 255, 255)'
+            };
+            bButton.addEventListener('click', bButtonSelect)
+            
+            var cButtonSelect = function() {
+                cButton.style.backgroundColor = 'rgb(102, 175, 209)'
+                aButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                bButton.style.backgroundColor = 'rgb(255, 255, 255)'
+            }
+            cButton.addEventListener('click', cButtonSelect)
+
         </script>
     </body>
 </html>
