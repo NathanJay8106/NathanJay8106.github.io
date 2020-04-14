@@ -4,16 +4,26 @@
         <meta charset="utf-8">
         <title>New webpage</title>
         <style>
+            #questionOn {
+                text-align: right;
+                font-family: sans-serif;
+            }
             .button {
                 background-color: rgb(255, 255, 255);
-                font-size: 148px;
-                margin-right: 50px;
-                
+                font-size: 10em;
+                margin-right: 25px;
+                margin-left: 25px;
+                cursor: pointer;
+            }
+            #buttons {
+                margin-top: 50px;
             }
         </style>
     </head>
     <body>
-        <div>
+        <p id = 'questionOn'></p>
+        
+        <div id = "buttons">
             <button class = 'button' id = 'aButton'>A</button>
             <button class = 'button' id = 'bButton'>B</button>
             <button class = 'button' id = 'cButton'>C</button>
@@ -21,6 +31,14 @@
         
         
         <script>
+            var answers = [];
+            
+            var questionOn = 0;
+            
+            var questionShow = document.getElementById('questionOn');
+            questionShow.innerHTML = questionOn + 1 + ' / ' + '40'
+            
+        
             var aButton = document.getElementById('aButton');
             var bButton = document.getElementById('bButton');
             var cButton = document.getElementById('cButton');
@@ -44,6 +62,18 @@
                 bButton.style.backgroundColor = 'rgb(255, 255, 255)'
             }
             cButton.addEventListener('click', cButtonSelect)
+            
+            window.addEventListener("keydown", function(e) {
+                if(e.key === "1" || e.key === 'a') {
+                    aButtonSelect();
+                }
+                if(e.key === "2" || e.key === 'b') {
+                    bButtonSelect();
+                }
+                if(e.key === '3' || e.key === 'c') {
+                    cButtonSelect();
+                }
+            });
 
         </script>
     </body>
