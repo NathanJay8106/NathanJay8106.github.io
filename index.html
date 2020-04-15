@@ -49,7 +49,8 @@
                 bButton.style.backgroundColor = 'rgb(255, 255, 255)';
                 cButton.style.backgroundColor = 'rgb(255, 255, 255)'
             };
-            aButton.addEventListener('click', aButtonSelect);
+            aButton.addEventListener('click', aButtonSelect)
+            aButton.addEventListener('touchstart', aButtonSelect);
             
             var bButtonSelect = function() {
                 bButton.style.backgroundColor = 'rgb(102, 175, 209)';
@@ -57,6 +58,7 @@
                 cButton.style.backgroundColor = 'rgb(255, 255, 255)'
             };
             bButton.addEventListener('click', bButtonSelect)
+            bButton.addEventListener('touchstart', bButtonSelect)
             
             var cButtonSelect = function() {
                 cButton.style.backgroundColor = 'rgb(102, 175, 209)'
@@ -64,6 +66,7 @@
                 bButton.style.backgroundColor = 'rgb(255, 255, 255)'
             }
             cButton.addEventListener('click', cButtonSelect)
+            cButton.addEventListener('touchstart', cButtonSelect)
             
             window.addEventListener("keydown", function(e) {
                 if(e.key === "1" || e.key === 'a') {
@@ -80,5 +83,3 @@
         </script>
     </body>
 </html>
-
-
