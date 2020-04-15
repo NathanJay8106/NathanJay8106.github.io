@@ -46,24 +46,33 @@
             var cButton = document.getElementById('cButton');
             var aButtonSelect = function() {
                 aButton.style.backgroundColor = 'rgb(102, 175, 209)';
+                aButton.style.color = 'rgb(255, 255, 255)'
                 bButton.style.backgroundColor = 'rgb(255, 255, 255)';
+                bButton.style.color = 'rgb(0, 0, 0)'
                 cButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                cButton.style.color = 'rgb(0, 0, 0)'
             };
             aButton.addEventListener('click', aButtonSelect)
             aButton.addEventListener('touchstart', aButtonSelect);
             
             var bButtonSelect = function() {
                 bButton.style.backgroundColor = 'rgb(102, 175, 209)';
+                bButton.style.color = 'rgb(255, 255, 255)'
                 aButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                aButton.style.color = 'rgb(0, 0, 0)'
                 cButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                cButton.style.color = 'rgb(0, 0, 0)'
             };
             bButton.addEventListener('click', bButtonSelect)
             bButton.addEventListener('touchstart', bButtonSelect)
             
             var cButtonSelect = function() {
                 cButton.style.backgroundColor = 'rgb(102, 175, 209)'
+                cButton.style.color = 'rgb(255, 255, 255)'
                 aButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                aButton.style.color = 'rgb(0, 0, 0)'
                 bButton.style.backgroundColor = 'rgb(255, 255, 255)'
+                bButton.style.color = 'rgb(0, 0, 0)'
             }
             cButton.addEventListener('click', cButtonSelect)
             cButton.addEventListener('touchstart', cButtonSelect)
