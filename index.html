@@ -1,94 +1,1217 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>New webpage</title>
-        <style>
-            #questionOn {
-                text-align: right;
-                font-family: sans-serif;
-                margin-right: 15px;
-            }
-            .button {
-                background-color: rgb(255, 255, 255);
-                font-size: 10em;
-                margin-right: 5px;
-                margin-left: 5px;
-                cursor: pointer;
-                width: 31%;
-            }
-            #buttons {
-                margin-top: 50px;
-            }
-        </style>
-    </head>
-    <body>
-        <p id = 'questionOn'></p>
-        
-        <div id = "buttons">
-            <button class = 'button' id = 'aButton'>A</button>
-            <button class = 'button' id = 'bButton'>B</button>
-            <button class = 'button' id = 'cButton'>C</button>
-        </div>
-        
-        
-        <script>
-            var answers = [];
-            
-            var questionOn = 0;
-            
-            var questionShow = document.getElementById('questionOn');
-            questionShow.innerHTML = 'Question ' + (questionOn + 1) + ' / ' + '40'
-            
-        
-            var aButton = document.getElementById('aButton');
-            var bButton = document.getElementById('bButton');
-            var cButton = document.getElementById('cButton');
-            var aButtonSelect = function() {
-                aButton.style.backgroundColor = 'rgb(102, 175, 209)';
-                aButton.style.color = 'rgb(255, 255, 255)'
-                bButton.style.backgroundColor = 'rgb(255, 255, 255)';
-                bButton.style.color = 'rgb(0, 0, 0)'
-                cButton.style.backgroundColor = 'rgb(255, 255, 255)'
-                cButton.style.color = 'rgb(0, 0, 0)'
-            };
-            aButton.addEventListener('click', aButtonSelect)
-            aButton.addEventListener('touchstart', aButtonSelect);
-            
-            var bButtonSelect = function() {
-                bButton.style.backgroundColor = 'rgb(102, 175, 209)';
-                bButton.style.color = 'rgb(255, 255, 255)'
-                aButton.style.backgroundColor = 'rgb(255, 255, 255)'
-                aButton.style.color = 'rgb(0, 0, 0)'
-                cButton.style.backgroundColor = 'rgb(255, 255, 255)'
-                cButton.style.color = 'rgb(0, 0, 0)'
-            };
-            bButton.addEventListener('click', bButtonSelect)
-            bButton.addEventListener('touchstart', bButtonSelect)
-            
-            var cButtonSelect = function() {
-                cButton.style.backgroundColor = 'rgb(102, 175, 209)'
-                cButton.style.color = 'rgb(255, 255, 255)'
-                aButton.style.backgroundColor = 'rgb(255, 255, 255)'
-                aButton.style.color = 'rgb(0, 0, 0)'
-                bButton.style.backgroundColor = 'rgb(255, 255, 255)'
-                bButton.style.color = 'rgb(0, 0, 0)'
-            }
-            cButton.addEventListener('click', cButtonSelect)
-            cButton.addEventListener('touchstart', cButtonSelect)
-            
-            window.addEventListener("keydown", function(e) {
-                if(e.key === "1" || e.key === 'a') {
-                    aButtonSelect();
-                }
-                if(e.key === "2" || e.key === 'b') {
-                    bButtonSelect();
-                }
-                if(e.key === '3' || e.key === 'c') {
-                    cButtonSelect();
-                }
-            });
 
-        </script>
-    </body>
+<!DOCTYPE html>
+<!--
+                  _
+                 | |
+ __ ___ ___ ___ _| |_ _ _ _ _ _   ___ __  _ _ _
+/ _|   Y _ Y _ Y   | '_| | | ' | /  _/  \| ' ' \
+\__\ | | __/ __/ | | | | | | | |_| || () | | | |
+|__/ __|___|___|___|_| \_,_|_|_|_\___\__/|_|_|_|
+   |_|
+
+-->
+<html class="hidden">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Minecraft: Java Edition - speedrun.com</title>
+	<meta name="description" content="Speedrunning leaderboards, resources, forums, and more!">
+	<meta name="csrftoken" content="">
+	<meta name="theme-color" content="#2ECB59">
+	<meta name="theme-color-light" content="#199C77">
+	<meta name="theme-color-dark" content="#2ECB59">
+
+		<!-- Begin twitter card -->
+	<meta name="twitter:card" content="summary" />
+	<!--<meta name="twitter:site" content="@speedruncom" />-->
+	<meta name="twitter:title" content="speedrun.com" />
+	<meta name="twitter:description" content="Speedrunning leaderboards, resources, forums, and more!" />
+	<meta name="twitter:image" content="http://www.speedrun.com/themes/mc/TwitterCard.png" />
+	<!-- End twitter card -->
+	
+	<link rel="icon" href="/images/1st.png">
+
+	<link href="/assets/css/vendor.min.css?v=b368cad4" rel="stylesheet">
+		<link href="/assets/theme.php?url=mc&amp;version=210d099de07e1673" rel="stylesheet">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-zrnmn8R8KkWl12rAZFt4yKjxplaDaT7/EUkKm7AovijfrQItFWR7O/JJn4DAa/gx" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.typekit.net/ofy1zzg.css">
+
+	<script src="/assets/js/vendor.min.js?v=a41f5a0d"></script>
+	<script src="/assets/js/app.min.js?v=a23d4036"></script>
+	<script src="https://j83ad.speedrun.com/a.js?upapi=true" type="text/javascript" async></script>
+
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+	
+
+	<!-- Google Analytics -->
+	<script>
+		document.documentElement.className += ' js';
+
+		var loadinggif = "<div class=\"spinner center\"><i class=\"fas fa-circle-notch fa-spin\"><\/i><\/div>";
+		var dateformat = {
+			relative: true,
+			dates: "Y-m-d",
+			times: "H:i",
+			long: "Y-m-d, H:i",
+		};
+
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:1997700,hjsv:6};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+		})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+		ga('create', 'UA-46440602-1', 'www.speedrun.com');
+		ga('send', 'pageview');
+
+		var bgscroll = 0;
+		var fgscroll = 0;
+	</script>
+</head>
+<body class="dark">
+	<div data-type="elo-user"  style="display: none"></div>
+	<div class="fullscreen-menu-background"></div>
+
+	
+<!-- Image and text -->
+<div class="navbar-background fixed-top">
+	<nav class="navbar navbar-expand navbar-dark">
+		<div class="container">
+			<a class="navbar-brand hidden-sm-down" href="/" style="float: left;">
+				<span class="hidden-light">
+											<img class="logo hidden-lg-down" src="/themes/mc/logo.png?version=" alt="speedrun.com">
+									</span>
+				<span class="hidden-dark">
+					<img class="logo hidden-sm-down" id="logo-light" src="/images/logo-white.png" alt="speedrun.com">
+				</span>
+			</a>
+
+			<div id="navbar-right">
+				<div id="navbar-main">
+					<ul class="navbar-nav">
+												<li class="nav-item hidden-md-down">
+							<a class="nav-link" href="/games">Games</a>
+						</li>
+												<li class="nav-item hidden-md-down">
+							<a class="nav-link" href="/streams">Streams</a>
+						</li>
+												<li class="nav-item hidden-md-down">
+							<a class="nav-link" href="/forum">Forums</a>
+						</li>
+												<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle dropdown-toggle-hidden-md-down" href="javascript:;" id="navbarDropdown" role="button" data-toggle="dropdown">
+								<span class="hidden-lg-up"><i class="fal fa-bars"></i></span>
+								<span class="hidden-md-down">More...</span>
+							</a>
+							<div class="dropdown-menu">
+								<a class="hidden-lg-up dropdown-item" href="/"><i class="fal fa-home fa-margin"></i>Home</a>
+								<a class="hidden-lg-up dropdown-item" href="/games"><i class="fal fa-gamepad fa-margin"></i>Games</a>
+								<a class="hidden-lg-up dropdown-item" href="/streams"><i class="fab fa-twitch fa-margin"></i>Streams</a>
+																<a class="hidden-lg-up dropdown-item" href="/forum"><i class="fal fa-comments fa-margin"></i>Forums</a>
+								<div class="hidden-lg-up dropdown-divider"></div>
+								<a class="dropdown-item" href="/news"><i class="fal fa-newspaper fa-margin"></i>News</a>
+								<a class="dropdown-item" href="/knowledgebase"><i class="fal fa-book"></i> Knowledge Base</a>
+								<a class="dropdown-item" href="/about"><i class="fal fa-info-circle fa-margin"></i>About</a>
+																<a class="dropdown-item" href="/knowledgebase/help"><i class="fal fa-at fa-margin"></i>Help / Contact</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item dark-mode active" href="javascript:;"><i class="fas fa-moon fa-margin"></i>Night Mode</a>
+								<div class="dropdown-divider"></div>
+								<div class="dropdown-header">Social</div>
+								<a class="dropdown-item" href="https://www.twitter.com/speedruncom" target="_blank"><i class="fab fa-twitter fa-margin"></i>Twitter</a>
+								<a class="dropdown-item" href="https://www.facebook.com/speedruncom" target="_blank"><i class="fab fa-facebook-f fa-margin"></i>Facebook</a>
+								<a class="dropdown-item" href="https://discord.gg/0h6sul1ZwHVpXJmK" target="_blank"><span class="icomoon icon-discord"></span>Discord</a>
+							</div>
+						</li>
+						<li class="hidden-sm-up nav-item dropdown">
+							<a class="nav-link search-button-xs" href="javascript:;" id="navbarDropdown" role="button" data-toggle="dropdown">
+								<i class="fal fa-search"></i>
+							</a>
+							<div class="dropdown-menu" id="search-results-xs">
+								<form class="navbar-form" onsubmit="return false;">
+									<input type="text" id="search-xs" class="form-control search searchbar-xs" placeholder="Search for games, users, etc...">
+								</form>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="navbar-user">
+					<ul class="navbar-nav">
+												<li class="nav-item nav-item-wide nobr"><a class="nav-link" href="#login" data-toggle="modal">Log in</a></li>
+						<li class="nav-item nav-item-wide nobr"><a class="nav-link" href="#signup" data-toggle="modal">Sign up</a></li>
+												<li class="nav-item nobr" data-toggle="modal" data-target="#language">
+							<a class="nav-link" href="javascript:;" data-toggle="tooltip" data-placement="top" data-original-title="English" onclick="$(this).blur();">
+								<img src="/images/flags/	gb.png" class="flagicon margin-none">
+							</a>
+						</li>
+											</ul>
+				</div>
+				<div id="navbar-search" class="hidden-xs">
+					<ul class="navbar-nav">
+						<form onsubmit="return false;">
+							<input class="form-control search" type="search" placeholder="Search for games, users, etc...">
+						</form>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</div>
+
+
+
+<div class="modal fade" id="language" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Language (Beta)</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row hidden-xs">
+											<div class="col-4">
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="bg">
+									<img src="/images/flags/	bg.png" class="flagicon mr-1">български
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ca">
+									<img src="/images/flags/	es/ct.png" class="flagicon mr-1">Català
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="cs">
+									<img src="/images/flags/	cz.png" class="flagicon mr-1">Čeština
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="da">
+									<img src="/images/flags/	dk.png" class="flagicon mr-1">Dansk
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="de">
+									<img src="/images/flags/	de.png" class="flagicon mr-1">Deutsch
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="el">
+									<img src="/images/flags/	gr.png" class="flagicon mr-1">ελληνικά
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent active">
+								<a href="javascript:;" class="changelanguage truncate-child active" data-language="en">
+									<img src="/images/flags/	gb.png" class="flagicon mr-1">English
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="es">
+									<img src="/images/flags/	es.png" class="flagicon mr-1">Español
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="fr">
+									<img src="/images/flags/	fr.png" class="flagicon mr-1">Français
+								</a>
+							</p>
+													</div>
+											<div class="col-4">
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ga">
+									<img src="/images/flags/	ie.png" class="flagicon mr-1">Gaeilge
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="gd">
+									<img src="/images/flags/	gb/sct.png" class="flagicon mr-1">Gàidhlig
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="id">
+									<img src="/images/flags/	id.png" class="flagicon mr-1">Bahasa Indonesia
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="it">
+									<img src="/images/flags/	it.png" class="flagicon mr-1">Italiano
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="he">
+									<img src="/images/flags/	il.png" class="flagicon mr-1">עברית‎
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="lv">
+									<img src="/images/flags/	lv.png" class="flagicon mr-1">Latviešu valoda
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="lt">
+									<img src="/images/flags/	lt.png" class="flagicon mr-1">Lietuvių kalba
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="nl">
+									<img src="/images/flags/	nl.png" class="flagicon mr-1">Nederlands
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ja">
+									<img src="/images/flags/	jp.png" class="flagicon mr-1">日本語
+								</a>
+							</p>
+													</div>
+											<div class="col-4">
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="no">
+									<img src="/images/flags/	no.png" class="flagicon mr-1">Norsk
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="pl">
+									<img src="/images/flags/	pl.png" class="flagicon mr-1">Polski
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="pt">
+									<img src="/images/flags/	pt.png" class="flagicon mr-1">Português
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ru">
+									<img src="/images/flags/	ru.png" class="flagicon mr-1">Русский
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="fi">
+									<img src="/images/flags/	fi.png" class="flagicon mr-1">Suomi
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="sv">
+									<img src="/images/flags/	se.png" class="flagicon mr-1">Svenska
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="tr">
+									<img src="/images/flags/	tr.png" class="flagicon mr-1">Türkçe
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="zh">
+									<img src="/images/flags/	cn.png" class="flagicon mr-1">中文 (简体)
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="zh-tw">
+									<img src="/images/flags/	tw.png" class="flagicon mr-1">中文 (繁體)
+								</a>
+							</p>
+													</div>
+									</div>
+				<div class="row hidden-sm-up">
+											<div class="col-6">
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="bg">
+									<img src="/images/flags/	bg.png" class="flagicon mr-1">български
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ca">
+									<img src="/images/flags/	es/ct.png" class="flagicon mr-1">Català
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="cs">
+									<img src="/images/flags/	cz.png" class="flagicon mr-1">Čeština
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="da">
+									<img src="/images/flags/	dk.png" class="flagicon mr-1">Dansk
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="de">
+									<img src="/images/flags/	de.png" class="flagicon mr-1">Deutsch
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="el">
+									<img src="/images/flags/	gr.png" class="flagicon mr-1">ελληνικά
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent active">
+								<a href="javascript:;" class="changelanguage truncate-child active" data-language="en">
+									<img src="/images/flags/	gb.png" class="flagicon mr-1">English
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="es">
+									<img src="/images/flags/	es.png" class="flagicon mr-1">Español
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="fr">
+									<img src="/images/flags/	fr.png" class="flagicon mr-1">Français
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ga">
+									<img src="/images/flags/	ie.png" class="flagicon mr-1">Gaeilge
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="gd">
+									<img src="/images/flags/	gb/sct.png" class="flagicon mr-1">Gàidhlig
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="id">
+									<img src="/images/flags/	id.png" class="flagicon mr-1">Bahasa Indonesia
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="it">
+									<img src="/images/flags/	it.png" class="flagicon mr-1">Italiano
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="he">
+									<img src="/images/flags/	il.png" class="flagicon mr-1">עברית‎
+								</a>
+							</p>
+													</div>
+											<div class="col-6">
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="lv">
+									<img src="/images/flags/	lv.png" class="flagicon mr-1">Latviešu valoda
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="lt">
+									<img src="/images/flags/	lt.png" class="flagicon mr-1">Lietuvių kalba
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="nl">
+									<img src="/images/flags/	nl.png" class="flagicon mr-1">Nederlands
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ja">
+									<img src="/images/flags/	jp.png" class="flagicon mr-1">日本語
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="no">
+									<img src="/images/flags/	no.png" class="flagicon mr-1">Norsk
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="pl">
+									<img src="/images/flags/	pl.png" class="flagicon mr-1">Polski
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="pt">
+									<img src="/images/flags/	pt.png" class="flagicon mr-1">Português
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="ru">
+									<img src="/images/flags/	ru.png" class="flagicon mr-1">Русский
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="fi">
+									<img src="/images/flags/	fi.png" class="flagicon mr-1">Suomi
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="sv">
+									<img src="/images/flags/	se.png" class="flagicon mr-1">Svenska
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="tr">
+									<img src="/images/flags/	tr.png" class="flagicon mr-1">Türkçe
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="zh">
+									<img src="/images/flags/	cn.png" class="flagicon mr-1">中文 (简体)
+								</a>
+							</p>
+														<p class="mb-1 pl-2 pb-1 truncate-parent">
+								<a href="javascript:;" class="changelanguage truncate-child " data-language="zh-tw">
+									<img src="/images/flags/	tw.png" class="flagicon mr-1">中文 (繁體)
+								</a>
+							</p>
+													</div>
+									</div>
+			</div>
+			<div class="modal-footer">
+								<a class="btn btn-default" data-dismiss="modal">Cancel</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="login" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="loginform" method="post" action="/ajax_login.php" class="ajaxpost form-horizontal ajax-include-target" data-target="loginmessage">
+				<div class="modal-header">
+					<h5 class="modal-title">Log in</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row">
+						<div class="col-sm-3 text-sm-right col-label-padding">
+							<label for="login_username">
+								Username:
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="login_username" name="username" placeholder="Username" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-3 text-sm-right col-label-padding">
+							<label for="login_password">
+								Password:
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="login_password" name="password" placeholder="Password" required>
+							<p class="hidden-sm-up right"><small><a href="/resetpassword">Forgot password</a></small></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-9 offset-sm-3">
+							<span id="loginmessage">&nbsp;</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Log in</button>
+					<a class="btn btn-default hidden-xs" href="/resetpassword">Forgot password</a>
+					<a class="btn btn-default" data-dismiss="modal">Cancel</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="signup" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="signupform" method="post" action="/ajax_signup.php" class="ajaxpost form-horizontal" data-target="signupmessage" onsubmit="$('#btn-signup').prop('disabled', true);">
+				<div class="modal-header">
+					<h5 class="modal-title">Sign up</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row">
+						<div class="col-sm-3 text-sm-right col-label-padding">
+							<label for="username1">
+								Username:
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="username1" name="username" placeholder="Username" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-3 text-sm-right col-label-padding">
+							<label for="email">
+								E-mail:
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-3 text-sm-right col-label-padding">
+							<label for="confirmemail">
+								Confirm:
+							</label>
+						</div>
+						<div class="col-sm-9">
+							<input type="email" class="form-control" id="confirmemail" name="confirmemail" placeholder="you@example.com" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-3 col-label-padding">
+						</div>
+						<div class="col-9">
+							<div id="recaptcha"></div>
+								<script>
+									var onloadCallback = function() {
+										recaptcha_render("dark");
+									};
+								</script>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-9 offset-sm-3">
+							<span id="signupmessage">&nbsp;</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit" id="btn-signup">Sign up</button> <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade"role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<input type="text" class="form-control">
+			<a class="btn btn-default"></a>
+			<a class="btn btn-primary"></a>
+		</div>
+	</div>
+</div>
+
+	
+	<main role="main" class="container widened">
+				<div class='row'>
+
+			<div class="col-12 ">
+					<div class="malediction hero" data-type="elo-placement" data-site="speedrun" data-area="ros" data-space="hero"></div>
+
+			</div>
+
+			
+				<div id="sidebar" class="col-auto widened">
+					
+
+<div class="panel">
+	<span class="center">
+			<p class="game-name">
+		<a href="/mc">
+						Minecraft:<br> Java Edition
+					</a>
+	</p>
+
+	<p>
+		<img class="cover-tall-128 border" src="/themes/mc/cover-256.png?version=" alt="">
+	</p>
+
+			
+										<p class="small">
+											<a href="/minecraft">Minecraft series</a>									</p>
+			
+									<p class="small">2011</p>
+			
+
+						<p class="small text-muted">
+								<a href="/games#platform=PC">PC</a>							</p>
+
+									
+			
+					
+
+			</span>
+
+	<nav class="nav flex-column reverse-padding-sides mb-2 mt-4">
+		
+										<a class="nav-link active" href="/mc/full_game"><i class="fal fa-trophy fa-margin"></i>Leaderboard</a>
+	 	
+			
+							<a class="nav-link" href="/mcce"><i class="fal fa-layer-plus fa-margin"></i>Category Extensions</a>
+			
+							<a class="nav-link" href="/mc/guides"><i class="fal fa-book fa-margin"></i>Guides</a>
+					
+								<a class="nav-link" href="/mc/resources"><i class="fal fa-link fa-margin"></i>Resources</a>
+					
+		
+							<a class="nav-link" href="https://discord.gg/jmdFn3C" target="_blank"><span class="icomoon icon-discord"></span>Discord</a>
+		
+				<a class="nav-link" href="/mc/streams"><i class="fab fa-twitch fa-margin"></i>Streams</a>
+		
+					<a class="nav-link" href="/mc/forum"><i class="fal fa-comments fa-margin"></i>Forum</a>
+		
+				<a class="nav-link" href="/mc/gamestats"><i class="fal fa-chart-line fa-margin"></i>Statistics</a>
+		
+					<a class="nav-link" href="/mc/games#unofficial=on"><i class="fal fa-gamepad fa-margin"></i></i>ROM Hacks</a>
+		
+		
+		
+			</nav>
+
+	
+			<p class="center"><small class="text-muted">
+			Moderated by:<br>
+						<a class='link-username nobr nounderline' href='/user/BlueCrystal004'><img class='usericon' src='/images/icons/super-mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Super Mod'><img class='usericon' src='/themes/user/BlueCrystal004/icon.png?version=a753431b' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title="Original Donor"><span class='username' ><span class="username-light"><span style="color:#ee2d88">B</span><span style="color:#e9338a">l</span><span style="color:#e4398c">u</span><span style="color:#df3f8f">e</span><span style="color:#da4591">C</span><span style="color:#d54b93">r</span><span style="color:#d05196">y</span><span style="color:#cc5798">s</span><span style="color:#c75d9b">t</span><span style="color:#c2639d">a</span><span style="color:#bd699f">l</span><span style="color:#b86fa2">0</span><span style="color:#b375a4">0</span><span style="color:#af7ba7">4</span></span><span class="username-dark"><span style="color:#ff3091">B</span><span style="color:#ff3a98">l</span><span style="color:#ff44a0">u</span><span style="color:#ff4ea7">e</span><span style="color:#ff58af">C</span><span style="color:#ff62b6">r</span><span style="color:#ff6cbe">y</span><span style="color:#ff76c5">s</span><span style="color:#ff80cd">t</span><span style="color:#ff8ad4">a</span><span style="color:#ff94dc">l</span><span style="color:#ff9ee3">0</span><span style="color:#ffa8eb">0</span><span style="color:#ffb3f3">4</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/AprilSR'><img class='usericon' src='/images/icons/super-mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Super Mod'><img class='usericon' src='/themes/user/AprilSR/icon.png?version=a2b79296' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#c75c9f">A</span><span style="color:#cd549b">p</span><span style="color:#d44c97">r</span><span style="color:#da4493">i</span><span style="color:#e13c8f">l</span><span style="color:#e7348b">S</span><span style="color:#ee2d88">R</span></span><span class="username-dark"><span style="color:#f772c5">A</span><span style="color:#f867bc">p</span><span style="color:#f95cb3">r</span><span style="color:#fb51ab">i</span><span style="color:#fc46a2">l</span><span style="color:#fd3b99">S</span><span style="color:#ff3091">R</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/TheeSizzler'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><img class='usericon' src='https://static-cdn.jtvnw.net/badges/v1/327a14ca-56d4-4a22-9d63-751f40930042/3' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Twitch Partner'><span class='username' ><span class="username-light" style="color: #D37339">TheeSizzler</span><span class="username-dark" style="color: #EF8241">TheeSizzler</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Crafterdark'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><span class='username' ><span class="username-light" style="color: #08AB6E">Crafterdark</span><span class="username-dark" style="color: #09B876">Crafterdark</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Geosquare'><img class='usericon' src='/images/icons/super-mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Super Mod'><span class='username' ><span class="username-light"><span style="color:#6666ee">G</span><span style="color:#606ce9">e</span><span style="color:#5a73e4">o</span><span style="color:#5479df">s</span><span style="color:#4f80da">q</span><span style="color:#4987d5">u</span><span style="color:#438dd0">a</span><span style="color:#3d94cb">r</span><span style="color:#389bc6">e</span></span><span class="username-dark"><span style="color:#6666ee">G</span><span style="color:#6170ee">e</span><span style="color:#5d7bee">o</span><span style="color:#5985ee">s</span><span style="color:#5590ee">q</span><span style="color:#509bee">u</span><span style="color:#4ca5ee">a</span><span style="color:#48b0ee">r</span><span style="color:#44bbee">e</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/SpeedNintendo'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><img class='usericon' src='/themes/user/SpeedNintendo/icon.png?version=e6ae3b28' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#d37339">S</span><span style="color:#d07538">p</span><span style="color:#cd7737">e</span><span style="color:#cb7a36">e</span><span style="color:#c87c35">d</span><span style="color:#c67f34">N</span><span style="color:#c38133">i</span><span style="color:#c08332">n</span><span style="color:#be8631">t</span><span style="color:#bb8830">e</span><span style="color:#b98b2f">n</span><span style="color:#b68d2e">d</span><span style="color:#b4902e">o</span></span><span class="username-dark"><span style="color:#ef8241">S</span><span style="color:#ef8740">p</span><span style="color:#ef8c40">e</span><span style="color:#ef9140">e</span><span style="color:#ef9640">d</span><span style="color:#ef9b3f">N</span><span style="color:#efa13f">i</span><span style="color:#efa63f">n</span><span style="color:#efab3f">t</span><span style="color:#efb03e">e</span><span style="color:#efb53e">n</span><span style="color:#efba3e">d</span><span style="color:#f0c03e">o</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/k'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/k/icon.png?version=b17245ab' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light" style="color: #AE6CCD">k</span><span class="username-dark" style="color: #C279E5">k</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Boscarvidios'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/Boscarvidios/icon.png?version=95d69629' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#b4902e">B</span><span style="color:#b19037">o</span><span style="color:#af9141">s</span><span style="color:#ac924b">c</span><span style="color:#aa9354">a</span><span style="color:#a7945e">r</span><span style="color:#a59468">v</span><span style="color:#a29572">i</span><span style="color:#a0967b">d</span><span style="color:#9d9785">i</span><span style="color:#9b988f">o</span><span style="color:#999999">s</span></span><span class="username-dark"><span style="color:#f0c03e">B</span><span style="color:#f1c54f">o</span><span style="color:#f2cb61">s</span><span style="color:#f4d172">c</span><span style="color:#f5d684">a</span><span style="color:#f6dc95">r</span><span style="color:#f8e2a7">v</span><span style="color:#f9e8b8">i</span><span style="color:#faedca">d</span><span style="color:#fcf3db">i</span><span style="color:#fdf9ed">o</span><span style="color:#ffffff">s</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/KaptainWutax'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><span class='username' ><span class="username-light" style="color: #E44141">KaptainWutax</span><span class="username-dark" style="color: #EE4444">KaptainWutax</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/VRplaYK'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/VRplaYK/icon.png?version=bc98b498' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light" style="color: #A010A0">VRplaYK</span><span class="username-dark" style="color: #A010A0">VRplaYK</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Mickthebrick1'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/Mickthebrick1/icon.png?version=d79f0566' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light" style="color: #389BC6">Mickthebrick1</span><span class="username-dark" style="color: #44BBEE">Mickthebrick1</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Willz'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><img class='usericon' src='/themes/user/Willz/icon.png?version=f9793de1' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title="Original Donor"><span class='username' ><span class="username-light"><span style="color:#a010a0">W</span><span style="color:#9125b3">i</span><span style="color:#833bc7">l</span><span style="color:#7450da">l</span><span style="color:#6666ee">z</span></span><span class="username-dark"><span style="color:#a010a0">W</span><span style="color:#9125b3">i</span><span style="color:#833bc7">l</span><span style="color:#7450da">l</span><span style="color:#6666ee">z</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/randomidiot13'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><span class='username' ><span class="username-light"><span style="color:#6666ee">r</span><span style="color:#5e6be3">a</span><span style="color:#5671d8">n</span><span style="color:#4e77ce">d</span><span style="color:#467dc3">o</span><span style="color:#3e82b8">m</span><span style="color:#3788ae">i</span><span style="color:#2f8ea3">d</span><span style="color:#279498">i</span><span style="color:#1f998e">o</span><span style="color:#179f83">t</span><span style="color:#0fa578">1</span><span style="color:#08ab6e">3</span></span><span class="username-dark"><span style="color:#6666ee">r</span><span style="color:#5e6ce4">a</span><span style="color:#5673da">n</span><span style="color:#4e7ad0">d</span><span style="color:#4781c6">o</span><span style="color:#3f88bc">m</span><span style="color:#378fb2">i</span><span style="color:#2f95a8">d</span><span style="color:#289c9e">i</span><span style="color:#20a394">o</span><span style="color:#18aa8a">t</span><span style="color:#10b180">1</span><span style="color:#09b876">3</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/DKEN'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><span class='username' ><span class="username-light"><span style="color:#999999">D</span><span style="color:#7899a8">K</span><span style="color:#589ab7">E</span><span style="color:#389bc6">N</span></span><span class="username-dark"><span style="color:#ffffff">D</span><span style="color:#c0e8f9">K</span><span style="color:#82d1f3">E</span><span style="color:#44bbee">N</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/SkyRota'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/SkyRota/icon.png?version=b0230b53' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light" style="color: #08AB6E">SkyRota</span><span class="username-dark" style="color: #09B876">SkyRota</span></span></a>, 						<a class='link-username nobr nounderline' href='/user/MangoBo1'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><span class='username' ><span class="username-light"><span style="color:#d37339">M</span><span style="color:#c4793a">a</span><span style="color:#b6803b">n</span><span style="color:#a8873c">g</span><span style="color:#9a8e3e">o</span><span style="color:#8c953f">B</span><span style="color:#7e9c40">o</span><span style="color:#70a342">1</span></span><span class="username-dark"><span style="color:#ef8241">M</span><span style="color:#e08c43">a</span><span style="color:#d29645">n</span><span style="color:#c3a047">g</span><span style="color:#b5aa4a">o</span><span style="color:#a6b44c">B</span><span style="color:#98be4e">o</span><span style="color:#8ac951">1</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/belj'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/belj/icon.png?version=32e5e6ac' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#ee2d88">b</span><span style="color:#d42390">e</span><span style="color:#ba1998">l</span><span style="color:#a010a0">j</span></span><span class="username-dark"><span style="color:#ff3091">b</span><span style="color:#df2596">e</span><span style="color:#bf1a9b">l</span><span style="color:#a010a0">j</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/Renderedblue'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><span class='username' ><span class="username-light"><span style="color:#6666ee">R</span><span style="color:#5d6ce2">e</span><span style="color:#5472d6">n</span><span style="color:#4c78cb">d</span><span style="color:#437fbf">e</span><span style="color:#3b85b3">r</span><span style="color:#328ba8">e</span><span style="color:#2a919c">d</span><span style="color:#219890">b</span><span style="color:#199e85">l</span><span style="color:#10a479">u</span><span style="color:#08ab6e">e</span></span><span class="username-dark"><span style="color:#6666ee">R</span><span style="color:#5d6de3">e</span><span style="color:#5574d8">n</span><span style="color:#4c7ccd">d</span><span style="color:#4483c2">e</span><span style="color:#3b8bb7">r</span><span style="color:#3392ac">e</span><span style="color:#2a9aa1">d</span><span style="color:#22a196">b</span><span style="color:#19a98b">l</span><span style="color:#11b080">u</span><span style="color:#09b876">e</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/pistacium'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><img class='usericon' src='/themes/user/pistacium/icon.png?version=c0cc8e8a' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title="Original Donor"><span class='username' ><span class="username-light"><span style="color:#d37339">p</span><span style="color:#d17045">i</span><span style="color:#d06d52">s</span><span style="color:#ce6a5f">t</span><span style="color:#cd676c">a</span><span style="color:#cb6478">c</span><span style="color:#ca6185">i</span><span style="color:#c85e92">u</span><span style="color:#c75c9f">m</span></span><span class="username-dark"><span style="color:#ef8241">p</span><span style="color:#f08051">i</span><span style="color:#f17e62">s</span><span style="color:#f27c72">t</span><span style="color:#f37a83">a</span><span style="color:#f47893">c</span><span style="color:#f576a4">i</span><span style="color:#f674b4">u</span><span style="color:#f772c5">m</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/winona_rar'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/winona_rar/icon.png?version=ec877564' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#999999">w</span><span style="color:#9c988d">i</span><span style="color:#9f9781">n</span><span style="color:#a29675">o</span><span style="color:#a59569">n</span><span style="color:#a8945d">a</span><span style="color:#ab9351">_</span><span style="color:#ae9245">r</span><span style="color:#b19139">a</span><span style="color:#b4902e">r</span></span><span class="username-dark"><span style="color:#ffffff">w</span><span style="color:#fdf8e9">i</span><span style="color:#fbf1d4">n</span><span style="color:#faeabe">o</span><span style="color:#f8e3a9">n</span><span style="color:#f6dc93">a</span><span style="color:#f5d57e">_</span><span style="color:#f3ce68">r</span><span style="color:#f1c753">a</span><span style="color:#f0c03e">r</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/eggyavocado'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/eggyavocado/icon.png?version=89711e35' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#999999">e</span><span style="color:#949a90">g</span><span style="color:#909b87">g</span><span style="color:#8c9c7e">y</span><span style="color:#889d76">a</span><span style="color:#849e6d">v</span><span style="color:#809f64">o</span><span style="color:#7ca05c">c</span><span style="color:#78a153">a</span><span style="color:#74a24a">d</span><span style="color:#70a342">o</span></span><span class="username-dark"><span style="color:#ffffff">e</span><span style="color:#f3f9ed">g</span><span style="color:#e7f4dc">g</span><span style="color:#dbeeca">y</span><span style="color:#d0e9b9">a</span><span style="color:#c4e4a8">v</span><span style="color:#b8de96">o</span><span style="color:#add985">c</span><span style="color:#a1d373">a</span><span style="color:#95ce62">d</span><span style="color:#8ac951">o</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/AlEmeralds'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/AlEmeralds/icon.png?version=1901873a' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#6666ee">A</span><span style="color:#6e66ea">l</span><span style="color:#7667e6">E</span><span style="color:#7e68e3">m</span><span style="color:#8668df">e</span><span style="color:#8e69db">r</span><span style="color:#966ad8">a</span><span style="color:#9e6ad4">l</span><span style="color:#a66bd0">d</span><span style="color:#ae6ccd">s</span></span><span class="username-dark"><span style="color:#6666ee">A</span><span style="color:#7068ed">l</span><span style="color:#7a6aec">E</span><span style="color:#846ceb">m</span><span style="color:#8e6eea">e</span><span style="color:#9970e9">r</span><span style="color:#a372e8">a</span><span style="color:#ad74e7">l</span><span style="color:#b776e6">d</span><span style="color:#c279e5">s</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/nalixlee'><img class='usericon' src='/images/icons/verifier.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Verifier'><img class='usericon' src='/themes/user/nalixlee/icon.png?version=1b4de0c2' title='' alt='' alt='' data-toggle='tooltip' data-placement='top' data-original-title=""><span class='username' ><span class="username-light"><span style="color:#af7ba7">n</span><span style="color:#b276a5">a</span><span style="color:#b572a4">l</span><span style="color:#b96da3">i</span><span style="color:#bc69a2">x</span><span style="color:#c064a1">l</span><span style="color:#c360a0">e</span><span style="color:#c75c9f">e</span></span><span class="username-dark"><span style="color:#ffb3f3">n</span><span style="color:#fda9ec">a</span><span style="color:#fca0e5">l</span><span style="color:#fb97df">i</span><span style="color:#fa8dd8">x</span><span style="color:#f984d2">l</span><span style="color:#f87bcb">e</span><span style="color:#f772c5">e</span></span></span></a>, 						<a class='link-username nobr nounderline' href='/user/MrMangoHands'><img class='usericon' src='/images/icons/mod.png' title='' alt='' data-toggle='tooltip' data-placement='top' data-original-title='Mod'><span class='username' ><span class="username-light"><span style="color:#e44141">M</span><span style="color:#df483f">r</span><span style="color:#db4f3d">M</span><span style="color:#d6563b">a</span><span style="color:#d25d3a">n</span><span style="color:#ce6438">g</span><span style="color:#c96c36">o</span><span style="color:#c57334">H</span><span style="color:#c17a33">a</span><span style="color:#bc8131">n</span><span style="color:#b8882f">d</span><span style="color:#b4902e">s</span></span><span class="username-dark"><span style="color:#ee4444">M</span><span style="color:#ee4f43">r</span><span style="color:#ee5a42">M</span><span style="color:#ee6542">a</span><span style="color:#ee7141">n</span><span style="color:#ee7c41">g</span><span style="color:#ef8740">o</span><span style="color:#ef9240">H</span><span style="color:#ef9e3f">a</span><span style="color:#efa93f">n</span><span style="color:#efb43e">d</span><span style="color:#f0c03e">s</span></span></span></a>					</small></p>
+	</div>
+
+
+					<div class="hidden-lg-up">
+							<div class="malediction midcontent_a" data-type="elo-placement" data-site="speedrun" data-area="ros" data-space="midcontent_a"></div>
+
+					</div>
+					<div class="hidden-md-down hidden-xxl-up">
+							<div class="malediction sidebar_a" data-type="elo-placement" data-site="speedrun" data-area="ros" data-space="sidebar_a"></div>
+
+					</div>
+				</div>
+				<div id="centerbar" class="col-auto widened">
+					<div class="maincontent"><script type="text/javascript">
+	var cats = {"7135":"Any_Glitchless","7133":"Any","7137":"All_Achievements","65464":"All_Advancements","25074":"Any_Random_Seed_Glitchless_Co-op","113515":"Any_Glitchless_Demo","63772":"Any_Glitchless_Peaceful","8501":"Any_Peaceful","134997":"Combined_RSG"};
+
+	function getCategoryIDFromUrl(url) {
+		for (var id in cats) {
+			if (cats[id] === url) {
+				return id;
+			}
+		}
+	}
+
+	function getCategoryUrlFromID(id) {
+		return encodeURIComponent(cats[id]);
+	}
+
+	function leaderboardChange() {
+		$('#leaderboarddiv').html("\t\t<div class=\"loadingbox\"><div class=\"spinner center\"><i class=\"fas fa-circle-notch fa-spin\"><\/i><\/div><\/div>\n");
+
+		updateLeaderboard(true);
+	}
+
+	function leaderboardLoad() {
+		if (window.location.hash) {
+			var hash  = forgivingUrlDecode(window.location.hash.replace('#', ''));
+			var parts = hash.split(',');
+
+			if (parts.length > 0) {
+				$('#category').val(getCategoryIDFromUrl(parts[0]));
+			}
+		}
+
+		updateLeaderboard(false);
+	}
+
+	function updateLeaderboard(updateHash) {
+		var category = parseInt($('#category').val());
+
+		if (updateHash) {
+			window.location.replace('#' + getCategoryUrlFromID(category));
+		}
+
+		// Highlight the selected category.
+		activateCategory(category);
+
+		// Only show the variables relevant for the selected category.
+		switchVariables(category);
+
+		// Highlight the selected subcategory values.
+		activateValues();
+
+		// Get the actual leaderboard.
+		ajax_get($('#leaderboardform'), 'leaderboarddiv');
+
+		// Update the submit run button to link directly to the selected category.
+		if ($('#submitrun')) {
+			$('#submitrun').attr('href', '/mc/editrun#' + getCategoryUrlFromID(category));
+		}
+	}
+
+	function activateCategory(category) {
+		// Remove the active class from all elements in the category navigations.
+		$('.category').removeClass('active');
+		$('#miscellaneous').removeClass('active');
+		$('#gwr').removeClass('active');
+
+		// Highlight the selected category.
+		$('#category' + category).addClass('active');
+		$('#category' + category).parent().parent().children("#miscellaneous").addClass('active');
+		$('#category' + category).parent().parent().children("#gwr").addClass('active');
+
+		if ($('#category' + category).data("gwr"))
+		{
+			$('#gwr-info').show();
+			$('#gwr-category-title').html($('#category' + category).html());
+		}
+		else
+		{
+			$('#gwr-info').hide();
+		}
+	}
+
+	function activateValues() {
+		// Remove the active class from all elements in the values navigation.
+		$('.valuesnav').find('.active').removeClass('active');
+
+		// Highlight the selected value for each subcategory variable.
+		$('input.variable').each(function() {
+			var varID = parseInt(this.id.replace('variable', ''));
+			$('#varnav' + varID).find('li#value' + this.value).toggleClass('active');
+		});
+	}
+
+	function switchVariables(category) {
+		// Hide/show the right variables based for the category.
+		// Note that this affects all variables, subcategory or not.
+		$('.variable').each(function() {
+			var catvalue = parseInt($(this).data('cat'));
+			$(this).toggle(catvalue === -1 || catvalue === category);
+		});
+
+		if($('#category' + category).data("gwr")) $('.variable').hide();
+	}
+
+	$(document).ready(function() {
+
+		$('.filteroption').click(function() {
+			$(this).parent().children().removeClass('active');
+			$(this).addClass('active');
+		});
+
+	});
+</script>
+
+<form id="leaderboardform" method="GET" action="/ajax_leaderboard.php">
+	<ul class="nav nav-tabs">
+									<a id="category7135" class="nav-item nav-link category" href="javascript:;" onclick="$('#category').val(7135); leaderboardChange();">Any% Glitchless</a>
+							<a id="category7133" class="nav-item nav-link category" href="javascript:;" onclick="$('#category').val(7133); leaderboardChange();">Any%</a>
+							<a id="category7137" class="nav-item nav-link category" href="javascript:;" onclick="$('#category').val(7137); leaderboardChange();">All Achievements</a>
+							<a id="category65464" class="nav-item nav-link category" href="javascript:;" onclick="$('#category').val(65464); leaderboardChange();">All Advancements</a>
+					
+					<li class="nav-item dropdown">
+				<a id="miscellaneous" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Misc.</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-misc">
+																		<a class="dropdown-item category" id="category25074" href="javascript:;" onclick="$('#category').val(25074); leaderboardChange();">Any% Random Seed Glitchless Co-op</a>
+													<a class="dropdown-item category" id="category113515" href="javascript:;" onclick="$('#category').val(113515); leaderboardChange();">Any% Glitchless (Demo)</a>
+													<a class="dropdown-item category" id="category63772" href="javascript:;" onclick="$('#category').val(63772); leaderboardChange();">Any% Glitchless (Peaceful)</a>
+													<a class="dropdown-item category" id="category8501" href="javascript:;" onclick="$('#category').val(8501); leaderboardChange();">Any% (Peaceful)</a>
+													<a class="dropdown-item category" id="category134997" href="javascript:;" onclick="$('#category').val(134997); leaderboardChange();">Combined RSG</a>
+															</div>
+			</li>
+		
+			</ul>
+
+		
+	<div class="panel panel-tabbed">
+		<div class="row">
+			<div class="col mb-4p5">
+								<div id="gwr-info" style="display: none;"><a href="/gwr"><span class="icomoon icon-gwr"> </span>Guinness World Records:</a> <span id="gwr-category-title"></span></div>
+
+																																<div class="btn-group custom-radio-group variable" id="varnav3207" data-cat="25074">
+					<input id="value57574" type="radio" name="variable3207" value="57574" checked onchange="leaderboardChange(); $('#miscdropdown3207').removeClass('active');"><label for="value57574" class="btn btn-default">
+									2 Players
+								</label><input id="value57575" type="radio" name="variable3207" value="57575" onchange="leaderboardChange(); $('#miscdropdown3207').removeClass('active');"><label for="value57575" class="btn btn-default">
+									3 Players
+								</label><input id="value10548" type="radio" name="variable3207" value="10548" onchange="leaderboardChange(); $('#miscdropdown3207').removeClass('active');"><label for="value10548" class="btn btn-default">
+									4 Players
+								</label><input id="value10549" type="radio" name="variable3207" value="10549" onchange="leaderboardChange(); $('#miscdropdown3207').removeClass('active');"><label for="value10549" class="btn btn-default">
+									5-9 Players
+								</label><input id="value10550" type="radio" name="variable3207" value="10550" onchange="leaderboardChange(); $('#miscdropdown3207').removeClass('active');"><label for="value10550" class="btn btn-default misc-last">
+									10+ Players
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav19152" data-cat="7133">
+					<input id="value63015" type="radio" name="variable19152" value="63015" checked onchange="leaderboardChange(); $('#miscdropdown19152').removeClass('active');"><label for="value63015" class="btn btn-default">
+									Set Seed
+								</label><input id="value63016" type="radio" name="variable19152" value="63016" onchange="leaderboardChange(); $('#miscdropdown19152').removeClass('active');"><label for="value63016" class="btn btn-default misc-last">
+									Random Seed
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav19112" data-cat="7135">
+					<input id="value62875" type="radio" name="variable19112" value="62875" onchange="leaderboardChange(); $('#miscdropdown19112').removeClass('active');"><label for="value62875" class="btn btn-default">
+									Set Seed
+								</label><input id="value62876" type="radio" name="variable19112" value="62876" checked onchange="leaderboardChange(); $('#miscdropdown19112').removeClass('active');"><label for="value62876" class="btn btn-default misc-last">
+									Random Seed
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav19153" data-cat="8501">
+					<input id="value63017" type="radio" name="variable19153" value="63017" checked onchange="leaderboardChange(); $('#miscdropdown19153').removeClass('active');"><label for="value63017" class="btn btn-default">
+									Set Seed
+								</label><input id="value63018" type="radio" name="variable19153" value="63018" onchange="leaderboardChange(); $('#miscdropdown19153').removeClass('active');"><label for="value63018" class="btn btn-default misc-last">
+									Random Seed
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav19126" data-cat="7137">
+					<input id="value62926" type="radio" name="variable19126" value="62926" onchange="leaderboardChange(); $('#miscdropdown19126').removeClass('active');"><label for="value62926" class="btn btn-default">
+									1.0-1.6
+								</label><input id="value62927" type="radio" name="variable19126" value="62927" checked onchange="leaderboardChange(); $('#miscdropdown19126').removeClass('active');"><label for="value62927" class="btn btn-default misc-last">
+									1.8-1.11
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav39353" data-cat="7135">
+					<input id="value134296" type="radio" name="variable39353" value="134296" onchange="leaderboardChange(); $('#miscdropdown39353').removeClass('active');"><label for="value134296" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value134297" type="radio" name="variable39353" value="134297" onchange="leaderboardChange(); $('#miscdropdown39353').removeClass('active');"><label for="value134297" class="btn btn-default">
+									1.9-1.15
+								</label><input id="value155578" type="radio" name="variable39353" value="155578" checked onchange="leaderboardChange(); $('#miscdropdown39353').removeClass('active');"><label for="value155578" class="btn btn-default misc-last">
+									1.16+
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav39354" data-cat="7133">
+					<input id="value134298" type="radio" name="variable39354" value="134298" onchange="leaderboardChange(); $('#miscdropdown39354').removeClass('active');"><label for="value134298" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value134299" type="radio" name="variable39354" value="134299" checked onchange="leaderboardChange(); $('#miscdropdown39354').removeClass('active');"><label for="value134299" class="btn btn-default misc-last">
+									1.9+
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav39355" data-cat="25074">
+					<input id="value134301" type="radio" name="variable39355" value="134301" onchange="leaderboardChange(); $('#miscdropdown39355').removeClass('active');"><label for="value134301" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value134302" type="radio" name="variable39355" value="134302" checked onchange="leaderboardChange(); $('#miscdropdown39355').removeClass('active');"><label for="value134302" class="btn btn-default">
+									1.9-1.15
+								</label><input id="value177939" type="radio" name="variable39355" value="177939" onchange="leaderboardChange(); $('#miscdropdown39355').removeClass('active');"><label for="value177939" class="btn btn-default misc-last">
+									1.16+
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav19154" data-cat="63772">
+					<input id="value63019" type="radio" name="variable19154" value="63019" checked onchange="leaderboardChange(); $('#miscdropdown19154').removeClass('active');"><label for="value63019" class="btn btn-default">
+									Set Seed
+								</label><input id="value63020" type="radio" name="variable19154" value="63020" onchange="leaderboardChange(); $('#miscdropdown19154').removeClass('active');"><label for="value63020" class="btn btn-default misc-last">
+									Random Seed
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav22659" data-cat="7137">
+					<input id="value75556" type="radio" name="variable22659" value="75556" checked onchange="leaderboardChange(); $('#miscdropdown22659').removeClass('active');"><label for="value75556" class="btn btn-default">
+									SS
+								</label><input id="value129305" type="radio" name="variable22659" value="129305" onchange="leaderboardChange(); $('#miscdropdown22659').removeClass('active');"><label for="value129305" class="btn btn-default">
+									SSG
+								</label><input id="value75557" type="radio" name="variable22659" value="75557" onchange="leaderboardChange(); $('#miscdropdown22659').removeClass('active');"><label for="value75557" class="btn btn-default">
+									RS
+								</label><input id="value129306" type="radio" name="variable22659" value="129306" onchange="leaderboardChange(); $('#miscdropdown22659').removeClass('active');"><label for="value129306" class="btn btn-default misc-last">
+									RSG
+								</label>					</div>
+																												<div class="btn-group custom-radio-group variable" id="varnav33251" data-cat="65464">
+					<input id="value112570" type="radio" name="variable33251" value="112570" checked onchange="leaderboardChange(); $('#miscdropdown33251').removeClass('active');"><label for="value112570" class="btn btn-default">
+									1.12
+								</label><input id="value112571" type="radio" name="variable33251" value="112571" onchange="leaderboardChange(); $('#miscdropdown33251').removeClass('active');"><label for="value112571" class="btn btn-default empty">
+									1.13
+								</label><input id="value112572" type="radio" name="variable33251" value="112572" onchange="leaderboardChange(); $('#miscdropdown33251').removeClass('active');"><label for="value112572" class="btn btn-default">
+									1.14
+								</label><input id="value130294" type="radio" name="variable33251" value="130294" onchange="leaderboardChange(); $('#miscdropdown33251').removeClass('active');"><label for="value130294" class="btn btn-default">
+									1.15
+								</label><input id="value152775" type="radio" name="variable33251" value="152775" onchange="leaderboardChange(); $('#miscdropdown33251').removeClass('active');"><label for="value152775" class="btn btn-default misc-last">
+									1.16
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav38458" data-cat="65464">
+					<input id="value130683" type="radio" name="variable38458" value="130683" checked onchange="leaderboardChange(); $('#miscdropdown38458').removeClass('active');"><label for="value130683" class="btn btn-default">
+									SS
+								</label><input id="value130684" type="radio" name="variable38458" value="130684" onchange="leaderboardChange(); $('#miscdropdown38458').removeClass('active');"><label for="value130684" class="btn btn-default empty">
+									SSG
+								</label><input id="value130685" type="radio" name="variable38458" value="130685" onchange="leaderboardChange(); $('#miscdropdown38458').removeClass('active');"><label for="value130685" class="btn btn-default empty">
+									RS
+								</label><input id="value130686" type="radio" name="variable38458" value="130686" onchange="leaderboardChange(); $('#miscdropdown38458').removeClass('active');"><label for="value130686" class="btn btn-default misc-last">
+									RSG
+								</label>					</div>
+																												<div class="btn-group custom-radio-group variable" id="varnav43715" data-cat="63772">
+					<input id="value149839" type="radio" name="variable43715" value="149839" checked onchange="leaderboardChange(); $('#miscdropdown43715').removeClass('active');"><label for="value149839" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value149840" type="radio" name="variable43715" value="149840" onchange="leaderboardChange(); $('#miscdropdown43715').removeClass('active');"><label for="value149840" class="btn btn-default misc-last">
+									1.9+
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav43716" data-cat="8501">
+					<input id="value149841" type="radio" name="variable43716" value="149841" checked onchange="leaderboardChange(); $('#miscdropdown43716').removeClass('active');"><label for="value149841" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value149842" type="radio" name="variable43716" value="149842" onchange="leaderboardChange(); $('#miscdropdown43716').removeClass('active');"><label for="value149842" class="btn btn-default misc-last">
+									1.9+
+								</label>					</div>
+																			<div class="btn-group custom-radio-group variable" id="varnav44953" data-cat="113515">
+					<input id="value153990" type="radio" name="variable44953" value="153990" onchange="leaderboardChange(); $('#miscdropdown44953').removeClass('active');"><label for="value153990" class="btn btn-default">
+									Pre 1.9
+								</label><input id="value153991" type="radio" name="variable44953" value="153991" onchange="leaderboardChange(); $('#miscdropdown44953').removeClass('active');"><label for="value153991" class="btn btn-default">
+									1.9-1.15
+								</label><input id="value153992" type="radio" name="variable44953" value="153992" checked onchange="leaderboardChange(); $('#miscdropdown44953').removeClass('active');"><label for="value153992" class="btn btn-default misc-last">
+									1.16+
+								</label>					</div>
+									
+				<input type="hidden" name="game" value="mc">
+				<input type="hidden" name="verified" value="1">
+								<input type="hidden" name="category" id="category" value="7135">
+
+				
+								<input type="hidden" name="platform" id="platform">
+				
+														<span class="variable" data-cat="-1">
+						<input type="hidden" id="variable666" name="variable666">
+						<script type="text/javascript">$('#variable666').val();</script>
+					</span>
+																			<span class="variable" data-cat="-1">
+						<input type="hidden" id="variable667" name="variable667">
+						<script type="text/javascript">$('#variable667').val();</script>
+					</span>
+																			<!--<input type="hidden" class="variable" id="variable3207">-->
+																			<!--<input type="hidden" class="variable" id="variable19152">-->
+																			<!--<input type="hidden" class="variable" id="variable19112">-->
+																			<!--<input type="hidden" class="variable" id="variable19153">-->
+																			<!--<input type="hidden" class="variable" id="variable19126">-->
+																			<!--<input type="hidden" class="variable" id="variable39353">-->
+																			<!--<input type="hidden" class="variable" id="variable39354">-->
+																			<!--<input type="hidden" class="variable" id="variable39355">-->
+																			<!--<input type="hidden" class="variable" id="variable19154">-->
+																			<!--<input type="hidden" class="variable" id="variable22659">-->
+																			<span class="variable" data-cat="-1">
+						<input type="hidden" id="variable21271" name="variable21271">
+						<script type="text/javascript">$('#variable21271').val();</script>
+					</span>
+																			<!--<input type="hidden" class="variable" id="variable33251">-->
+																			<!--<input type="hidden" class="variable" id="variable38458">-->
+																			<span class="variable" data-cat="-1">
+						<input type="hidden" id="variable42617" name="variable42617">
+						<script type="text/javascript">$('#variable42617').val();</script>
+					</span>
+																			<!--<input type="hidden" class="variable" id="variable43715">-->
+																			<!--<input type="hidden" class="variable" id="variable43716">-->
+																			<!--<input type="hidden" class="variable" id="variable44953">-->
+									
+								<input type="hidden" id="loadtimes" name="loadtimes" onchange="leaderboardChange();" value="2">
+				
+				
+				<input type="hidden" name="video" id="video">
+				<input type="hidden" name="obsolete" id="obsolete">
+			</div>
+			<div class="col right nobr mb-4p5">
+				<div class="dropdown">
+					<button type="button" class="btn btn-default dropdown-toggle mb-1" data-toggle="dropdown">
+						Filter <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu">
+
+						
+												<li class="dropdown-submenu">
+							<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Platforms</a>
+							<ul class="dropdown-menu">
+								<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#platform').val(0);leaderboardChange();">Any platform</a>
+																<a href="javascript:" class="dropdown-item filteroption" onclick="$('#platform').val(31);leaderboardChange();">PC</a>
+															</ul>
+						</li>
+						
+																				<li class="dropdown-submenu">
+								<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Version</a>
+								<ul class="dropdown-menu">
+									<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#variable666').val(0);leaderboardChange();">Any</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('153079');leaderboardChange();">1.16.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('115300');leaderboardChange();">1.14.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1582');leaderboardChange();">1.7.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1586');leaderboardChange();">1.7.10</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15390');leaderboardChange();">1.8.9</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1581');leaderboardChange();">1.6.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1563');leaderboardChange();">1.0</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1564');leaderboardChange();">1.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1565');leaderboardChange();">1.2.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1566');leaderboardChange();">1.2.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1567');leaderboardChange();">1.2.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1568');leaderboardChange();">1.2.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1569');leaderboardChange();">1.2.5</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1570');leaderboardChange();">1.3.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1571');leaderboardChange();">1.3.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1572');leaderboardChange();">1.4.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1573');leaderboardChange();">1.4.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1574');leaderboardChange();">1.4.5</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1575');leaderboardChange();">1.4.6</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1576');leaderboardChange();">1.4.7</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1577');leaderboardChange();">1.5.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1578');leaderboardChange();">1.5.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1579');leaderboardChange();">1.6.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1580');leaderboardChange();">1.6.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('60004');leaderboardChange();">1.7.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1583');leaderboardChange();">1.7.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1584');leaderboardChange();">1.7.5</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15391');leaderboardChange();">1.7.6</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15392');leaderboardChange();">1.7.7</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15393');leaderboardChange();">1.7.8</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1585');leaderboardChange();">1.7.9</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1587');leaderboardChange();">1.8</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('1588');leaderboardChange();">1.8.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('2004');leaderboardChange();">1.8.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('2005');leaderboardChange();">1.8.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('3464');leaderboardChange();">1.8.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('5562');leaderboardChange();">1.8.5</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('5563');leaderboardChange();">1.8.6</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('5564');leaderboardChange();">1.8.7</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('5672');leaderboardChange();">1.8.8</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15394');leaderboardChange();">1.9</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15395');leaderboardChange();">1.9.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15396');leaderboardChange();">1.9.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15397');leaderboardChange();">1.9.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15398');leaderboardChange();">1.9.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('15399');leaderboardChange();">1.10</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('94682');leaderboardChange();">1.10.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('30517');leaderboardChange();">1.11</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('27918');leaderboardChange();">1.11.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('41447');leaderboardChange();">1.12</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('47977');leaderboardChange();">1.12.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('50593');leaderboardChange();">1.12.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('78643');leaderboardChange();">1.13</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('85868');leaderboardChange();">1.13.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('90268');leaderboardChange();">1.13.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('106457');leaderboardChange();">1.14</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('109567');leaderboardChange();">1.14.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('113302');leaderboardChange();">1.14.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('129324');leaderboardChange();">1.15</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('130452');leaderboardChange();">1.15.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('133549');leaderboardChange();">1.15.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('152531');leaderboardChange();">1.16</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('159776');leaderboardChange();">1.16.2</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('165404');leaderboardChange();">1.16.3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('174552');leaderboardChange();">1.16.4</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('178884');leaderboardChange();">3.14</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('179002');leaderboardChange();">20w48a</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('179428');leaderboardChange();">1.16.100</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('181106');leaderboardChange();">69420</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('182105');leaderboardChange();">20w51a</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('186330');leaderboardChange();">2312312312</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('187704');leaderboardChange();">1.16.5</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('190952');leaderboardChange();">i dont know;-; i dont really look at it</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('191439');leaderboardChange();">1000.100000000000.1</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('194827');leaderboardChange();">16.1.201</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('195452');leaderboardChange();">21w06a</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('197290');leaderboardChange();">bored smashing</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('198627');leaderboardChange();">21w08b</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable666').val('199598');leaderboardChange();">time to die</a>
+																	</ul>
+							</li>
+																											<li class="dropdown-submenu">
+								<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Difficulty</a>
+								<ul class="dropdown-menu">
+									<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#variable667').val(0);leaderboardChange();">Any</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable667').val('1590');leaderboardChange();">Easy</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable667').val('1591');leaderboardChange();">Normal</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable667').val('1592');leaderboardChange();">Hard</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable667').val('1593');leaderboardChange();">Hardcore</a>
+																	</ul>
+							</li>
+																																																																																																																																																																																																																																			<li class="dropdown-submenu">
+								<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">F3</a>
+								<ul class="dropdown-menu">
+									<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#variable21271').val(0);leaderboardChange();">Any</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable21271').val('69915');leaderboardChange();">F3</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable21271').val('69916');leaderboardChange();">No F3</a>
+																	</ul>
+							</li>
+																																																																			<li class="dropdown-submenu">
+								<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Mods</a>
+								<ul class="dropdown-menu">
+									<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#variable42617').val(0);leaderboardChange();">Any</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable42617').val('146325');leaderboardChange();">Vanilla</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable42617').val('146326');leaderboardChange();">Optifine</a>
+																		<a href="javascript:" class="dropdown-item filteroption" onclick="$('#variable42617').val('156610');leaderboardChange();">CaffeineMC</a>
+																	</ul>
+							</li>
+																																																																									
+						
+						<li class="dropdown-submenu">
+							<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Videos</a>
+							<ul class="dropdown-menu">
+								<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#video').val(0);leaderboardChange();">With or without</a>
+								<a href="javascript:" class="dropdown-item filteroption" onclick="$('#video').val(1);leaderboardChange();">With only</a>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Obsoleted runs</a>
+							<ul class="dropdown-menu">
+								<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#obsolete').val(0);leaderboardChange();">Hidden</a>
+								<a href="javascript:" class="dropdown-item filteroption" onclick="$('#obsolete').val(1);leaderboardChange();">Shown</a>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a class="dropdown-item dropdown-toggle" tabindex="-1" href="javascript:">Date</a>
+							<ul class="dropdown-menu">
+								<a href="javascript:" class="dropdown-item filteroption active" onclick="$('#date-container').hide(); $('#date').val(''); leaderboardChange();">Current</a>
+								<a href="javascript:" class="dropdown-item filteroption" onclick="$('#date-container').show();">As of specific date...</a>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+								<div id="date-container" class="width-150 inline-block" style="display: none;">
+					<div class="input-group date" data-provide="datepicker" data-date="2021-03-03" data-date-format="yyyy-mm-dd" data-date-week-start="1" data-date-autoclose="true" data-date-orientation="bottom" data-date-end-date="2021-03-03">
+						<input class="span2 form-control" type="text" value="" name="date" id="date" autocomplete="off" placeholder="2021-03-03" onchange="leaderboardChange();">
+						<span class="add-on"></span>
+						<label class="input-group-append">
+							<span class="btn btn-default">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</label>
+					</div>
+				</div>
+
+				<a href='#rules' data-toggle='modal' class='btn btn-default mb-1'>View rules</a>
+				<a href="/mc/editrun" class="btn btn-primary mb-1" id="submitrun">Submit run</a>
+
+			</div>
+		</div>
+
+		<div id="leaderboarddiv">		<div class="loadingbox"><div class="spinner center"><i class="fas fa-circle-notch fa-spin"></i></div></div>
+</div>
+		<script>leaderboardLoad();</script>
+	</div>
+</form>
+</div>
+				</div>
+				<div id="extrabar" class="col-auto hidden-xl-down">
+					<div class="fixed">
+							<div class="malediction rail" data-type="elo-placement" data-site="speedrun" data-area="ros" data-space="rail"></div>
+
+					</div>
+				</div>
+
+			
+			<div class="col-12 ">
+					<div class="malediction footer" data-type="elo-placement" data-site="speedrun" data-area="ros" data-space="footer"></div>
+
+			</div>
+
+		</div>
+	</main>
+
+	<footer id="footer" class="text-muted">
+		&copy; 2021
+				&middot; <a href="/privacypolicy">Privacy Policy</a>
+	</footer>
+
+	<footer id="foreground" class="hidden-light"></footer>
+
+	<a class="btn btn-primary" style="display: none"></a>
+
+	<div class="device-xs hidden-sm-up"></div>
+	<div class="device-sm hidden-xs hidden-md-up"></div>
+	<div class="device-md hidden-sm-down hidden-lg-up"></div>
+	<div class="device-lg hidden-md-down hidden-xl"></div>
+	<div class="device-lg hidden-lg-down"></div>
+
+	<!-- Begin comScore -->
+	<script>
+	var _comscore = _comscore || [];
+	_comscore.push({ c1: "2", c2: "6035118" });
+	(function() {
+		var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+		s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+		el.parentNode.insertBefore(s, el);
+	})();
+	</script>
+	<noscript>
+	   <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6035118&amp;cv=2.0&amp;cj=1" style="position: absolute; margin: -1rem;" />
+	</noscript>
+	<!-- End comScore -->
+
+	<!-- Nielsen Online SiteCensus -->
+	<div><img src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-603339h&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt="" style="position: absolute; margin: -1rem;" /></div>
+	<!-- End Nielsen Online SiteCensus -->
+
+	<div id='cdm-zone-end'></div>
+
+	</body>
 </html>
